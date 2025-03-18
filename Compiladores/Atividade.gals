@@ -1,0 +1,32 @@
+#Options
+GenerateScanner = true
+GenerateParser = false
+Language = Java
+ScannerName = Lexico
+ScannerCaseSensitive = true
+ScannerTable = Full
+Input = String
+#RegularDefinitions
+LETRA : [a-z A-Z]
+DIGITO : [0-9]
+TIPOS : "inteiro" | "varchar"
+STRING : "is" | "else" | "while"
+
+
+#Tokens
+//operadores
+"+"
+"-"
+"*"
+"/"
+"="
+
+//tokens
+ATRIB : {TIPOS}
+DES : {STRING}
+ID : {LETRA} ({LETRA}  |  {DIGITO})*
+INT: {DIGITO}+
+
+//ignorar
+ : [" "\t\n\r]*
+
