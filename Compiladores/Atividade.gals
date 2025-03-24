@@ -5,27 +5,41 @@ Language = Java
 ScannerName = Lexico
 ScannerCaseSensitive = true
 ScannerTable = Full
-Input = String
+Input = Stream
 #RegularDefinitions
 LETRA : [a-z A-Z]
 DIGITO : [0-9]
-TIPOS : "inteiro" | "varchar"
-STRING : "is" | "else" | "while"
-
+TIPOS : "int" | "float"
+OP : "+" | "-" | "*" | "/" 
+ATRIB: "="
+LOGIC: "!" | "!=" | "<" | ">" | "<=" | ">=" | "&" | "==" | "||" | "true" | "false" | """" | "(" | ")" 
+COMENT: "#"
+MARCADOR: """"
+CARACTER: [^\t]
+ESCREVA: escreva
+LEIA: leia
 
 #Tokens
-//operadores
-"+"
-"-"
-"*"
-"/"
-"="
 
 //tokens
-ATRIB : {TIPOS}
-DES : {STRING}
+ESCREVA: {ESCREVA}
+LEIA: {LEIA}
+DECLARACAO : {TIPOS}
 ID : {LETRA} ({LETRA}  |  {DIGITO})*
 INT: {DIGITO}+
+FLOAT: {DIGITO}+ .{DIGITO}+
+MATEMATICO: {OP}?
+LOGICO: {LOGIC}?
+COMENTARIO: {COMENT} {CARACTER}+
+ATRIBUICAO: {ATRIB}
+STRING: {MARCADOR} {CARACTER}+ {MARCADOR}
+IF = ID : "if"
+ELSE = ID : "else"
+WHILE = ID : "while"
+FOR = ID : "for"
+
+
+
 
 //ignorar
  : [" "\t\n\r]*
