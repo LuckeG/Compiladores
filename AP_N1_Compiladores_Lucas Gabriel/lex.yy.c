@@ -829,7 +829,7 @@ YY_RULE_SETUP
 case 7:
 YY_RULE_SETUP
 #line 29 "aula1.l"
-{printf("CCONDIÇÃO: %s\n",yytext);}
+{printf("CONDIÇÃO: %s\n",yytext);}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
@@ -1876,7 +1876,7 @@ void yyfree (void * ptr )
 
 /*definições*/
 int main(){
-    yyin=fopen("entrada.lulu","r");
+    yyin=fopen("entrada.lulu.txt","r");
     yylex();
     fclose(yyin);
 return 0;

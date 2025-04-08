@@ -36,7 +36,7 @@ COMMENT (#.*)
 %%
 /*definições*/
 int main(){
-    yyin=fopen("entrada.lulu","r");
+    yyin=fopen("entrada.lulu.txt","r");
     yylex();
     fclose(yyin);
 return 0;
