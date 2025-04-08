@@ -14,7 +14,7 @@ FLOAT [0-9]+\.[0-9]+
 FUNC (printf|scanf|Switch|System|return|include|main)
 LOGIC [!=|<|>|<=|>=|&|==|&&|\'||\"]
 SIMB [\;\?\!\%\.\_\:\{\}\[\]\(\)\\]
-CONDI (if|else|elif)
+CONDI (if|else|elif|break)
 REPET (for|do|while)
 COMMENT (#.*)
 
@@ -26,12 +26,12 @@ COMMENT (#.*)
 {OP} {printf("OPERAÇÃO: %s\n",yytext);}
 {ATRIB} {printf("ATRIBUIÇÃO: %s\n",yytext);}
 {FUNC} {printf("FUNÇÃO: %s\n",yytext);}
+{CONDI} {printf("CONDIÇÃO: %s\n",yytext);}
 {LETRA} {printf("STRING: %s\n",yytext);}
 {DELIM} {printf("CARACTER IGNORADO\n");}
 {SIMB} {printf("SIMBOLOS: %s\n",yytext);}
 {LOGIC} {printf("LOGICA: %s\n",yytext);}
 {REPET} {printf("REPETIÇÃO: %s\n",yytext);}
-{CONDI} {printf("CCONDIÇÃO: %s\n",yytext);}
 {COMMENT} {printf("COMENTARIO: %s\n",yytext);}
 %%
 /*definições*/
