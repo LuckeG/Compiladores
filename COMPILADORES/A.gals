@@ -26,11 +26,14 @@ LEIA: leia
 //operadores
 "("
 ")"
+","
 //token
-ATRIBUTO: {TIPO}
+INI: "INICIO"
+FIM: "FIM"
 ESCREVA: {ESCREVA}
 LEIA: {LEIA}
 ID: {LETRA} ( {LETRA} | {DIGITO} )*
+ATRIBUTO: {TIPO}
 
 IF = ID: "if"
 ELSE = ID: "else"
@@ -53,8 +56,30 @@ ATRIBUICAO: {ATRIBU}
 // ignorar
 : [" "\t\n\r]*
 #NonTerminals
+<START>
+<COD>
+<IN>
+<OUT>
 <E>
-<LER>
 #Grammar
-<E>::= <E> OPERADOR <E>
-             | INT | FLOAT | ID;
+<START>::= INI <COD> FIM;
+
+<COD>::= <IN><COD>
+	|<OUT><COD>
+	|<E><COD>
+	|<IN>
+	|<OUT>
+	|<E>;
+
+<IN>::= ESCREVA | LEIA;
+
+<OUT>::= STRING "," <OUT>
+	| ID "," <OU
+	| STRING
+	| ID;
+
+<E>::= <E> OPERADOR <E>;
+              | ID;
+
+
+
