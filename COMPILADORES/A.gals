@@ -78,7 +78,7 @@ ATRIBUICAO: {ATRIBU}
 	| STRING
 	| ID;
 
-<E>::= <E> OPERADOR <E>;
+<E>::= <E> OPERADOR <E>
               | ID;
 
 
