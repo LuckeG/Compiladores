@@ -1,27 +1,39 @@
 %{
-
+	char aux[30];
 %}
 
-NUM [0-9]+
+NUM [0-9]+\.?[0-9]*
+VARS [a-z]
+PRINT "mostrar"
+INI "INICIO"
 FIM "FIM"
-INICIO "INICIO"
-FUNC "escreva" | "leia"
-LETRA [a-zA-Z]
 %%
 {NUM} {
-	yylval = atoi(yytext);
+	yylval.flo = atof(yytext);
 	return NUM;
 	}
 	
-{FIM} {return FIM;}
-{INICIO} {return INICIO;}
-"+" {return '+';}
-"-" {return '-';}
-"*" {return '*';}
-"/" {return '/';}
-"=" {return '=';}
-"(" {return '(';}
-")" {return ')';}
-[\ \n\t]*	{;}
+{VARS} {
+	yylval.inte = *yytext - 'a';
+	return VARS;
+	}
 	
+{PRINT} {
+	return PRINT;
+}
+
+
+[-+()=/*^] {
+	return *yytext;
+	}
+	
+{INI} {
+	return INI;
+	}			
+	
+{FIM} {
+	return FIM;
+	}			
+[\ \n\t]*	{;}
+. {printf("(%s) Ingonrado\n",yytext);}
 %%

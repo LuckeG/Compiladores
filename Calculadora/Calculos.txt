@@ -1,7 +1,11 @@
 INICIO
-
-2 * 3 + 7
-
-3 * 4
-
+	a = 2.21
+	b = 3.17
+	c = a + b - 1.2 * 3
+	
+	mostrar(a)
+	mostrar(b)
+	mostrar(c)
+	mostrar(2 * 3^2 - a)
+	
 FIM
