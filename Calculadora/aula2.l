@@ -1,12 +1,19 @@
 %{
+    #include <stdio.h>
+%}
+
+%{
 	char aux[30];
 %}
 
 NUM [0-9]+\.?[0-9]*
 VARS [a-z]
-PRINT "mostrar"
+PRINTF "ESCREVA"
 INI "INICIO"
 FIM "FIM"
+SCANF "LEIA"
+
+
 %%
 {NUM} {
 	yylval.flo = atof(yytext);
@@ -18,11 +25,13 @@ FIM "FIM"
 	return VARS;
 	}
 	
-{PRINT} {
-	return PRINT;
+"ESCREVA" {
+	return PRINTF;
 }
 
-
+"LEIA" {
+	return SCANF;
+}
 [-+()=/*^] {
 	return *yytext;
 	}
@@ -33,7 +42,11 @@ FIM "FIM"
 	
 {FIM} {
 	return FIM;
-	}			
-[\ \n\t]*	{;}
-. {printf("(%s) Ingonrado\n",yytext);}
+	}		
+
+[ \t\r\n]+   ;
+
+. {printf("(%s) Ingnorado\n",yytext); return 0;}
 %%
+
+int yywrap() { return 1; }

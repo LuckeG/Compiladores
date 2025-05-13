@@ -14,13 +14,16 @@ void yyerror (char *s){
 %union{
 	float flo;
 	int inte;
+	char* str;
 	}
 
 %token <flo>NUM
 %token <inte>VARS
-%token PRINT
+%token PRINTF
 %token FIM
 %token INI
+%token SCANF
+%token <str> STRING
 %left '+' '-'
 %left '*' '/'
 %right '^'
@@ -38,13 +41,22 @@ cod: cod cmdos
 	|
 	;
 
-cmdos: PRINT '(' exp ')' {
-						printf ("%.2f \n",$3);
-						}
+cmdos: 
+	 PRINTF '(' saidas ')'
+	| SCANF '(' VARS ')' {
+				scanf("%f", &var[$3]);
+				}
 	| VARS '=' exp {
 					var[$1] = $3;
 					}
 	;
+
+str: STRING { printf("%s\n", $1); free($1); };
+
+saidas: str "," saidas |
+ exp "," saidas { printf("%2.f\n", $1); }
+ |	str
+ |	exp {printf("Número: %2.f\n", $1); };
 
 exp: exp '+' exp {$$ = $1 + $3;}
 	|exp '-' exp {$$ = $1 - $3;}
@@ -65,7 +77,7 @@ valor: NUM {$$ = $1;}
 #include "lex.yy.c"
 
 int main(){
-	yyin=fopen("Calculos.txt","r");
+	yyin=fopen("entradas.txt","r");
 	yyparse();
 	yylex();
 	fclose(yyin);

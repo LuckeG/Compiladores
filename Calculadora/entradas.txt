@@ -1,0 +1,6 @@
+INICIO
+    leia(a)
+    escreva(a)
+    a=a*4
+    escreva(a)
+FIM
