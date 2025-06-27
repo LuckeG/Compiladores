@@ -1,6 +1,51 @@
-INICIO
-    leia(a)
-    escreva(a)
-    a=a*4
-    escreva(a)
+// exemplo.auge - Programa de Teste para a Linguagem Auge
+
+// Requisito: Declaração de variáveis (int, float, string)
+var nome;
+var idade;
+var salario;
+var contador;
+
+// Requisito: Leitura e Escrita
+PRINTT("Digite seu nome:");
+LERS(nome); // Lê uma string
+
+PRINTT("Digite sua idade:");
+LER(idade); // Lê um número
+
+// Requisito: Atribuição e Operações Aritméticas
+salario = 1500.50 * 2;
+
+PRINTT("====================================");
+PRINTT("Ola, ");
+PRINTT(nome); // Escreve variável string
+PRINTT("Seu salario calculado e:");
+PRINT(salario); // Escreve variável numérica
+
+// Requisito: Estrutura Condicional (IF/ELSE) e Operadores Lógicos
+IF (idade >= 18) {
+    PRINTT("Voce e maior de idade.");
+} ELSE {
+    PRINTT("Voce e menor de idade.");
+}
+
+// Requisito: Estrutura de Repetição (WHILE)
+PRINTT("Contando ate 5:");
+contador = 1;
+WHILE (contador <= 5) {
+    PRINT(contador);
+    contador = contador + 1;
+}
+
+// Requisito: Arrays (Vetores)
+PRINTT("Testando Vetores:");
+var notas[3];
+notas[0] = 10;
+notas[1] = 8.5;
+notas[2] = (notas[0] + notas[1]) / 2;
+
+PRINTT("A terceira nota (media das outras) e:");
+PRINT(notas[2]);
+
+PRINTT("Fim do programa.");
 FIM
