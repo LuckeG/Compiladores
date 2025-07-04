@@ -1,6 +1,6 @@
 %{
 #include <string.h>
-#include "aula5.tab.h"
+#include "analisador.tab.h"
 
 void copia_valor_str() {
     yylval.str = strdup(yytext);

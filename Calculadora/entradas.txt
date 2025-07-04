@@ -6,18 +6,18 @@ VAR TEXTO nome;
 VAR TEXTO mensagem;
 
 // Interacao com o usuario
-print("Digite seu nome:");
+print("Digite seu nome: ");
 LEIA(nome);
 
-print("Digite sua idade:");
+print("Digite sua idade: ");
 LEIA(idade);
 
 // Estrutura condicional
 SE (idade >= 18) {
-    print("Voce eh maior de idade.");
+    print("Voce é maior de idade.");
     salario = 2500.50;
 } SENAO {
-    print("Voce eh menor de idade.");
+    print("Voce é menor de idade.");
     salario = 0.0;
 }
 
@@ -30,8 +30,8 @@ print("Ola " + nome + " seu salario é de R$ " +salario);
 // Estrutura de repeticao
 VAR INTEIRO contador;
 contador = 1;
-print("Contando ate 3:");
-while (contador <= 3) {
+print("Contando ate 10:");
+while (contador <= 10) {
     print(contador);
     contador = contador + 1;
 }

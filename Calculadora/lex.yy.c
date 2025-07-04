@@ -488,10 +488,10 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "aula5.l"
-#line 2 "aula5.l"
+#line 1 "analisador.l"
+#line 2 "analisador.l"
 #include <string.h>
-#include "aula5.tab.h"
+#include "analisador.tab.h"
 
 void copia_valor_str() {
     yylval.str = strdup(yytext);
@@ -714,7 +714,7 @@ YY_DECL
 		}
 
 	{
-#line 14 "aula5.l"
+#line 14 "analisador.l"
 
 #line 720 "lex.yy.c"
 
@@ -775,88 +775,88 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 15 "aula5.l"
+#line 15 "analisador.l"
 { /* Ignora comentários de linha */ }
 	YY_BREAK
 case 2:
 /* rule 2 can match eol */
 YY_RULE_SETUP
-#line 16 "aula5.l"
+#line 16 "analisador.l"
 { /* Ignora espaços em branco, tabs, novas linhas e non-breaking spaces */ }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 18 "aula5.l"
+#line 18 "analisador.l"
 { return T_INTEIRO; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 19 "aula5.l"
+#line 19 "analisador.l"
 { return T_REAL; }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 20 "aula5.l"
+#line 20 "analisador.l"
 { return T_TEXTO; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 22 "aula5.l"
+#line 22 "analisador.l"
 { return SE; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 23 "aula5.l"
+#line 23 "analisador.l"
 { return SENAO; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 24 "aula5.l"
+#line 24 "analisador.l"
 { return ENQUANTO; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 25 "aula5.l"
+#line 25 "analisador.l"
 { return ESCREVA; }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 26 "aula5.l"
+#line 26 "analisador.l"
 { return LEIA; }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 27 "aula5.l"
+#line 27 "analisador.l"
 { return VAR; }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 28 "aula5.l"
+#line 28 "analisador.l"
 { return INICIO; }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 29 "aula5.l"
+#line 29 "analisador.l"
 { return FIM; }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 31 "aula5.l"
+#line 31 "analisador.l"
 { yylval.fval = atof(yytext); return NUM_FLOAT; }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 32 "aula5.l"
+#line 32 "analisador.l"
 { yylval.ival = atoi(yytext); return NUM_INT; }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 34 "aula5.l"
+#line 34 "analisador.l"
 { copia_valor_str(); return ID; }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 36 "aula5.l"
+#line 36 "analisador.l"
 {
                       yytext[yyleng-1] = '\0';
                       yylval.str = strdup(yytext + 1);
@@ -865,47 +865,47 @@ YY_RULE_SETUP
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 42 "aula5.l"
+#line 42 "analisador.l"
 { yylval.fn = 1; return CMP; }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 43 "aula5.l"
+#line 43 "analisador.l"
 { yylval.fn = 2; return CMP; }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 44 "aula5.l"
+#line 44 "analisador.l"
 { yylval.fn = 3; return CMP; }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 45 "aula5.l"
+#line 45 "analisador.l"
 { yylval.fn = 4; return CMP; }
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 46 "aula5.l"
+#line 46 "analisador.l"
 { yylval.fn = 5; return CMP; }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 47 "aula5.l"
+#line 47 "analisador.l"
 { yylval.fn = 6; return CMP; }
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 49 "aula5.l"
+#line 49 "analisador.l"
 { return *yytext; }
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 51 "aula5.l"
+#line 51 "analisador.l"
 { printf("Caractere desconhecido: %s\n", yytext); }
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 52 "aula5.l"
+#line 52 "analisador.l"
 ECHO;
 	YY_BREAK
 #line 912 "lex.yy.c"
@@ -1913,7 +1913,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 52 "aula5.l"
+#line 52 "analisador.l"
 
 
 int yywrap() {
