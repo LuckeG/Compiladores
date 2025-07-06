@@ -1,5 +1,5 @@
 
-# Interpretador de Linguagem Simples
+# Recursos da Linguagem
 
 Este projeto implementa um interpretador de uma **linguagem de programação simples**, utilizando **Lex** (Flex) e **Yacc** (Bison), que simula uma linguagem com variáveis, expressões, controle de fluxo e vetores.
 
