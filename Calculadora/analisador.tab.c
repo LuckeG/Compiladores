@@ -69,16 +69,6 @@
 /* First part of user prologue.  */
 #line 1 "analisador.y"
 
-/*
- * =====================================================================================
- * Seção de Declarações em C
- *
- * Esta seção é copiada diretamente para o arquivo C gerado pelo Bison.
- * Contém todas as inclusões de bibliotecas, definições de estruturas de dados,
- * variáveis globais e protótipos de funções necessárias para o analisador.
- * =====================================================================================
- */
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -148,7 +138,7 @@ Valor eval(AstNode *a); // Função principal que interpreta a AST.
 char* valor_para_string(Valor v);
 
 
-#line 152 "analisador.tab.c"
+#line 142 "analisador.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -602,9 +592,9 @@ static const yytype_int8 yytranslate[] =
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,   129,   129,   130,   135,   136,   152,   158,   176,   179,
-     182,   185,   188,   191,   194,   199,   200,   201,   206,   207,
-     208,   209,   210,   211,   212,   213,   214,   215,   216,   217
+       0,   109,   109,   110,   115,   116,   132,   138,   156,   159,
+     162,   165,   168,   171,   174,   179,   180,   181,   186,   187,
+     188,   189,   190,   191,   192,   193,   194,   195,   196,   197
 };
 #endif
 
@@ -1218,25 +1208,25 @@ yyreduce:
   switch (yyn)
     {
   case 2: /* programa: INICIO lista_comandos FIM  */
-#line 129 "analisador.y"
+#line 109 "analisador.y"
                                   { if((yyvsp[-1].a)) eval((yyvsp[-1].a)); /* Ao final, avalia a AST construída */ }
-#line 1224 "analisador.tab.c"
+#line 1214 "analisador.tab.c"
     break;
 
   case 3: /* programa: INICIO FIM  */
-#line 130 "analisador.y"
+#line 110 "analisador.y"
                                   { /* Programa vazio é válido */ }
-#line 1230 "analisador.tab.c"
+#line 1220 "analisador.tab.c"
     break;
 
   case 4: /* lista_comandos: %empty  */
-#line 135 "analisador.y"
+#line 115 "analisador.y"
       { (yyval.a) = NULL; }
-#line 1236 "analisador.tab.c"
+#line 1226 "analisador.tab.c"
     break;
 
   case 5: /* lista_comandos: lista_comandos comando  */
-#line 137 "analisador.y"
+#line 117 "analisador.y"
       {
           // Constrói uma lista de nós da AST.
           if ((yyvsp[-1].a) == NULL) {
@@ -1248,20 +1238,20 @@ yyreduce:
               (yyval.a) = novo_no_ast('L', (yyvsp[-1].a), (yyvsp[0].a));
           }
       }
-#line 1252 "analisador.tab.c"
+#line 1242 "analisador.tab.c"
     break;
 
   case 6: /* comando: VAR tipo_var ID ';'  */
-#line 153 "analisador.y"
+#line 133 "analisador.y"
         { 
             insere_simbolo((yyvsp[-1].str), (Tipo)(yyvsp[-2].ival)); // Insere na tabela de símbolos.
             (yyval.a) = NULL; // Declarações não geram nós executáveis na AST, então retorna NULL.
         }
-#line 1261 "analisador.tab.c"
+#line 1251 "analisador.tab.c"
     break;
 
   case 7: /* comando: VAR tipo_var ID '[' exp ']' ';'  */
-#line 159 "analisador.y"
+#line 139 "analisador.y"
         {
             // Insere o símbolo como um TIPO_VETOR.
             Simbolo *s = insere_simbolo((yyvsp[-4].str), TIPO_VETOR);
@@ -1278,143 +1268,143 @@ yyreduce:
             }
             (yyval.a) = NULL; // Também não gera nó executável.
         }
-#line 1282 "analisador.tab.c"
+#line 1272 "analisador.tab.c"
     break;
 
   case 8: /* comando: ID '=' exp ';'  */
-#line 177 "analisador.y"
+#line 157 "analisador.y"
         { (yyval.a) = novo_no_atribuicao((yyvsp[-3].str), (yyvsp[-1].a)); /* Cria um nó de atribuição. */ }
-#line 1288 "analisador.tab.c"
+#line 1278 "analisador.tab.c"
     break;
 
   case 9: /* comando: ID '[' exp ']' '=' exp ';'  */
-#line 180 "analisador.y"
+#line 160 "analisador.y"
         { (yyval.a) = novo_no_atribuicao_vetor((yyvsp[-6].str), (yyvsp[-4].a), (yyvsp[-1].a)); /* Cria um nó de atribuição a vetor. */ }
-#line 1294 "analisador.tab.c"
+#line 1284 "analisador.tab.c"
     break;
 
   case 10: /* comando: SE '(' exp ')' '{' lista_comandos '}'  */
-#line 183 "analisador.y"
+#line 163 "analisador.y"
         { (yyval.a) = novo_no_controle('I', (yyvsp[-4].a), (yyvsp[-1].a), NULL); /* Nó de controle 'I' (IF) sem ELSE. */ }
-#line 1300 "analisador.tab.c"
+#line 1290 "analisador.tab.c"
     break;
 
   case 11: /* comando: SE '(' exp ')' '{' lista_comandos '}' SENAO '{' lista_comandos '}'  */
-#line 186 "analisador.y"
+#line 166 "analisador.y"
         { (yyval.a) = novo_no_controle('I', (yyvsp[-8].a), (yyvsp[-5].a), (yyvsp[-1].a)); /* Nó de controle 'I' (IF) com ELSE. */ }
-#line 1306 "analisador.tab.c"
+#line 1296 "analisador.tab.c"
     break;
 
   case 12: /* comando: ENQUANTO '(' exp ')' '{' lista_comandos '}'  */
-#line 189 "analisador.y"
+#line 169 "analisador.y"
         { (yyval.a) = novo_no_controle('W', (yyvsp[-4].a), (yyvsp[-1].a), NULL); /* Nó de controle 'W' (WHILE). */ }
-#line 1312 "analisador.tab.c"
+#line 1302 "analisador.tab.c"
     break;
 
   case 13: /* comando: ESCREVA '(' exp ')' ';'  */
-#line 192 "analisador.y"
+#line 172 "analisador.y"
         { (yyval.a) = novo_no_ast('P', (yyvsp[-2].a), NULL); /* Nó 'P' (Print). */ }
-#line 1318 "analisador.tab.c"
+#line 1308 "analisador.tab.c"
     break;
 
   case 14: /* comando: LEIA '(' ID ')' ';'  */
-#line 195 "analisador.y"
+#line 175 "analisador.y"
         { (yyval.a) = novo_no_ast('R', novo_no_id((yyvsp[-2].str)), NULL); /* Nó 'R' (Read). */ }
-#line 1324 "analisador.tab.c"
+#line 1314 "analisador.tab.c"
     break;
 
   case 15: /* tipo_var: T_INTEIRO  */
-#line 199 "analisador.y"
+#line 179 "analisador.y"
                 { (yyval.ival) = TIPO_INT; }
-#line 1330 "analisador.tab.c"
+#line 1320 "analisador.tab.c"
     break;
 
   case 16: /* tipo_var: T_REAL  */
-#line 200 "analisador.y"
+#line 180 "analisador.y"
                 { (yyval.ival) = TIPO_FLOAT; }
-#line 1336 "analisador.tab.c"
+#line 1326 "analisador.tab.c"
     break;
 
   case 17: /* tipo_var: T_TEXTO  */
-#line 201 "analisador.y"
+#line 181 "analisador.y"
                 { (yyval.ival) = TIPO_STRING; }
-#line 1342 "analisador.tab.c"
+#line 1332 "analisador.tab.c"
     break;
 
   case 18: /* exp: NUM_INT  */
-#line 206 "analisador.y"
+#line 186 "analisador.y"
                               { (yyval.a) = (AstNode*)novo_no_num_int((yyvsp[0].ival));    }
-#line 1348 "analisador.tab.c"
+#line 1338 "analisador.tab.c"
     break;
 
   case 19: /* exp: NUM_FLOAT  */
-#line 207 "analisador.y"
+#line 187 "analisador.y"
                               { (yyval.a) = (AstNode*)novo_no_num_float((yyvsp[0].fval));  }
-#line 1354 "analisador.tab.c"
+#line 1344 "analisador.tab.c"
     break;
 
   case 20: /* exp: TEXTO  */
-#line 208 "analisador.y"
+#line 188 "analisador.y"
                               { (yyval.a) = (AstNode*)novo_no_texto((yyvsp[0].str));      }
-#line 1360 "analisador.tab.c"
+#line 1350 "analisador.tab.c"
     break;
 
   case 21: /* exp: ID  */
-#line 209 "analisador.y"
+#line 189 "analisador.y"
                               { (yyval.a) = (AstNode*)novo_no_id((yyvsp[0].str));         }
-#line 1366 "analisador.tab.c"
+#line 1356 "analisador.tab.c"
     break;
 
   case 22: /* exp: ID '[' exp ']'  */
-#line 210 "analisador.y"
+#line 190 "analisador.y"
                               { (yyval.a) = novo_no_vetor_acesso((yyvsp[-3].str), (yyvsp[-1].a));     }
-#line 1372 "analisador.tab.c"
+#line 1362 "analisador.tab.c"
     break;
 
   case 23: /* exp: exp '+' exp  */
-#line 211 "analisador.y"
+#line 191 "analisador.y"
                               { (yyval.a) = novo_no_ast('+', (yyvsp[-2].a), (yyvsp[0].a));         }
-#line 1378 "analisador.tab.c"
+#line 1368 "analisador.tab.c"
     break;
 
   case 24: /* exp: exp '-' exp  */
-#line 212 "analisador.y"
+#line 192 "analisador.y"
                               { (yyval.a) = novo_no_ast('-', (yyvsp[-2].a), (yyvsp[0].a));         }
-#line 1384 "analisador.tab.c"
+#line 1374 "analisador.tab.c"
     break;
 
   case 25: /* exp: exp '*' exp  */
-#line 213 "analisador.y"
+#line 193 "analisador.y"
                               { (yyval.a) = novo_no_ast('*', (yyvsp[-2].a), (yyvsp[0].a));         }
-#line 1390 "analisador.tab.c"
+#line 1380 "analisador.tab.c"
     break;
 
   case 26: /* exp: exp '/' exp  */
-#line 214 "analisador.y"
+#line 194 "analisador.y"
                               { (yyval.a) = novo_no_ast('/', (yyvsp[-2].a), (yyvsp[0].a));         }
-#line 1396 "analisador.tab.c"
+#line 1386 "analisador.tab.c"
     break;
 
   case 27: /* exp: exp CMP exp  */
-#line 215 "analisador.y"
+#line 195 "analisador.y"
                               { (yyval.a) = novo_no_comparacao((yyvsp[-1].fn), (yyvsp[-2].a), (yyvsp[0].a));   }
-#line 1402 "analisador.tab.c"
+#line 1392 "analisador.tab.c"
     break;
 
   case 28: /* exp: '-' exp  */
-#line 216 "analisador.y"
+#line 196 "analisador.y"
                               { (yyval.a) = novo_no_ast('M', (yyvsp[0].a), NULL);        }
-#line 1408 "analisador.tab.c"
+#line 1398 "analisador.tab.c"
     break;
 
   case 29: /* exp: '(' exp ')'  */
-#line 217 "analisador.y"
+#line 197 "analisador.y"
                               { (yyval.a) = (yyvsp[-1].a); /* Parênteses apenas agrupam, não criam nós. */ }
-#line 1414 "analisador.tab.c"
+#line 1404 "analisador.tab.c"
     break;
 
 
-#line 1418 "analisador.tab.c"
+#line 1408 "analisador.tab.c"
 
       default: break;
     }
@@ -1607,17 +1597,8 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 220 "analisador.y"
+#line 200 "analisador.y"
 
-
-/* * =====================================================================================
- * Seção de Código C
- *
- * Implementação de todas as funções C declaradas na primeira seção.
- * Aqui é onde a "mágica" acontece: manipulação da tabela de símbolos,
- * criação dos nós da AST e, mais importante, a interpretação da AST (função eval).
- * =====================================================================================
- */
 
 // Procura um símbolo (variável) na tabela de símbolos.
 Simbolo* busca_simbolo(char *nome) {

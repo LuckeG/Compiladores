@@ -22,36 +22,6 @@ SE (idade >= 18) {
 }
 
 // Concatenacao de texto e operacoes
-// Nossa linguagem nao suporta o operador '+' para textos.
-// O resultado eh obtido com multiplos prints:
 print("Ola " + nome + " seu salario é de R$ " +salario);
-
-
-// Estrutura de repeticao
-VAR INTEIRO contador;
-contador = 1;
-print("Contando ate 10:");
-while (contador <= 10) {
-    print(contador);
-    contador = contador + 1;
-}
-
-// Vetores (arrays)
-VAR REAL notas[4];
-print("Preenchendo vetor de notas...");
-notas[0] = 7.5;
-notas[1] = 9.0;
-// O operador '++' nao foi implementado, usamos a soma.
-notas[2] = 5.5 + 1;
-notas[3] = 8.0;
-
-print("A segunda nota foi:");
-print(notas[1]);
-
-VAR REAL soma;
-soma = notas[0] + notas[1] + notas[2] + notas[3];
-print("A media das notas eh:");
-print(soma / 4);
-
 print("Fim do programa.");
 FIM

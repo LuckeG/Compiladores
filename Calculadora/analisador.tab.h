@@ -80,7 +80,7 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 86 "analisador.y"
+#line 76 "analisador.y"
 
     int ival;           // Para números inteiros.
     float fval;         // Para números de ponto flutuante.

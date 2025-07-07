@@ -1,14 +1,4 @@
 %{
-/*
- * =====================================================================================
- * Seção de Declarações em C
- *
- * Esta seção é copiada diretamente para o arquivo C gerado pelo Bison.
- * Contém todas as inclusões de bibliotecas, definições de estruturas de dados,
- * variáveis globais e protótipos de funções necessárias para o analisador.
- * =====================================================================================
- */
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -115,16 +105,6 @@ char* valor_para_string(Valor v);
 
 %%
 
-/* * =====================================================================================
- * Seção de Regras da Gramática
- *
- * Esta seção define a sintaxe da linguagem. Cada regra descreve como
- * construir uma parte da linguagem a partir de tokens e outras regras.
- * As ações em C (código entre {}) são executadas quando uma regra é reconhecida.
- * O principal objetivo aqui é construir a Árvore Sintática Abstrata (AST).
- * =====================================================================================
- */
-
 programa:
       INICIO lista_comandos FIM   { if($2) eval($2); /* Ao final, avalia a AST construída */ }
     | INICIO FIM                  { /* Programa vazio é válido */ }
@@ -218,15 +198,6 @@ exp:
     ;
 
 %%
-
-/* * =====================================================================================
- * Seção de Código C
- *
- * Implementação de todas as funções C declaradas na primeira seção.
- * Aqui é onde a "mágica" acontece: manipulação da tabela de símbolos,
- * criação dos nós da AST e, mais importante, a interpretação da AST (função eval).
- * =====================================================================================
- */
 
 // Procura um símbolo (variável) na tabela de símbolos.
 Simbolo* busca_simbolo(char *nome) {
