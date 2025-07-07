@@ -226,24 +226,25 @@ FIM
 
 ```plaintext
 INICIO
-// Vetores (arrays)
-VAR REAL notas[4];
-print("Preenchendo vetor de notas...");
-notas[0] = 7.5;
-notas[1] = 9.0;
-// O operador '++' nao foi implementado, usamos a soma.
-notas[2] = 5.5 + 1;
-notas[3] = 8.0;
+VAR INTEIRO n;
+VAR INTEIRO a;
+VAR INTEIRO b;
+VAR INTEIRO i;
+VAR INTEIRO temp;
 
-print("A segunda nota foi:");
-print(notas[1]);
+print("Digite um numero: ");
+LEIA(n);
+a = 0;
+b = 1;
 
-VAR REAL soma;
-soma = notas[0] + notas[1] + notas[2] + notas[3];
-print("A media das notas eh:");
-print(soma / 4);
-
-print("Fim do programa.");
+i = 0;
+while (i < n) {
+    print(a);
+    temp = a + b;
+    a = b;
+    b = temp;
+    i = i + 1;
+}
 FIM
 ```
 
