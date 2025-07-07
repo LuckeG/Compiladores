@@ -205,7 +205,6 @@ VAR REAL notas[4];
 print("Preenchendo vetor de notas...");
 notas[0] = 7.5;
 notas[1] = 9.0;
-// O operador '++' nao foi implementado, usamos a soma.
 notas[2] = 5.5 + 1;
 notas[3] = 8.0;
 
