@@ -1,7 +1,7 @@
 
-# 🔵 Manual do Interpretador Flex/Bison
+# 🔵 Manual do Analisador
 
-Este interpretador foi desenvolvido em C com as ferramentas **Flex** (scanner) e **Bison** (parser) para processar uma linguagem fictícia com variáveis, vetores, controle de fluxo, entrada e saída de dados.
+Este interpretador foi desenvolvido em C com as ferramentas Flex e Bison para processar uma linguagem fictícia com variáveis, vetores, controle de fluxo, entrada e saída de dados.
 
 ---
 
